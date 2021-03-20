@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		047E5200260012420022752F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E51FF260012420022752F /* AppDelegate.swift */; };
-		047E5202260012420022752F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E5201260012420022752F /* ViewController.swift */; };
+		047E5202260012420022752F /* arVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E5201260012420022752F /* arVC.swift */; };
 		047E5204260012420022752F /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 047E5203260012420022752F /* Experience.rcproject */; };
 		047E5207260012420022752F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047E5205260012420022752F /* Main.storyboard */; };
 		047E5209260012460022752F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047E5208260012460022752F /* Assets.xcassets */; };
 		047E520C260012460022752F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047E520A260012460022752F /* LaunchScreen.storyboard */; };
 		047E5217260012460022752F /* ticTacToeARTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E5216260012460022752F /* ticTacToeARTests.swift */; };
 		047E5222260012470022752F /* ticTacToeARUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E5221260012470022752F /* ticTacToeARUITests.swift */; };
+		049F18A0260583A700187D1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F189F260583A700187D1D /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,7 @@
 /* Begin PBXFileReference section */
 		047E51FC260012420022752F /* ticTacToeAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ticTacToeAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		047E51FF260012420022752F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		047E5201260012420022752F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		047E5201260012420022752F /* arVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arVC.swift; sourceTree = "<group>"; };
 		047E5203260012420022752F /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
 		047E5206260012420022752F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		047E5208260012460022752F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +50,7 @@
 		047E521D260012470022752F /* ticTacToeARUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ticTacToeARUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		047E5221260012470022752F /* ticTacToeARUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticTacToeARUITests.swift; sourceTree = "<group>"; };
 		047E5223260012470022752F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		049F189F260583A700187D1D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				047E51FF260012420022752F /* AppDelegate.swift */,
-				047E5201260012420022752F /* ViewController.swift */,
+				049F189F260583A700187D1D /* ViewController.swift */,
+				047E5201260012420022752F /* arVC.swift */,
 				047E5203260012420022752F /* Experience.rcproject */,
 				047E5205260012420022752F /* Main.storyboard */,
 				047E5208260012460022752F /* Assets.xcassets */,
@@ -258,8 +261,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				047E5202260012420022752F /* ViewController.swift in Sources */,
+				047E5202260012420022752F /* arVC.swift in Sources */,
 				047E5200260012420022752F /* AppDelegate.swift in Sources */,
+				049F18A0260583A700187D1D /* ViewController.swift in Sources */,
 				047E5204260012420022752F /* Experience.rcproject in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,3 +1,22 @@
 [
-
+  {
+    "libraryIdentifier" : "ba506cbceb7b9ffa324a59312df73537",
+    "format" : "model",
+    "displayName" : "grid.usdz"
+  },
+  {
+    "libraryIdentifier" : "ffc3ffc2aa67921338104593043cb25f",
+    "format" : "model",
+    "displayName" : "plate.usdz"
+  },
+  {
+    "libraryIdentifier" : "fc932ec8ae64b7ebafe6139efd897df4",
+    "format" : "model",
+    "displayName" : "circle.usdz"
+  },
+  {
+    "libraryIdentifier" : "d2ddee15b25c3120bdb7f98fa8b84247",
+    "format" : "model",
+    "displayName" : "cross.usdz"
+  }
 ]
