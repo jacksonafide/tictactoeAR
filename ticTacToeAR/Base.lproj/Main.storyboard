@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18092"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,33 +15,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="ticTacToeAR" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PEM-0L-epM">
-                                <rect key="frame" x="20" y="44" width="374" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLv-D4-185">
-                                <rect key="frame" x="147" y="240" width="121" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="New game - vs AI"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLv-D4-185">
+                                <rect key="frame" x="152.5" y="422.5" width="109" height="51"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="24"/>
+                                <state key="normal" title="Play vs. AI">
+                                    <color key="titleColor" red="0.0" green="0.57932451225355308" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="8iH-t7-lue" kind="presentation" identifier="aiSegue" id="5xa-yM-s7p"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uNu-qg-Ft5">
-                                <rect key="frame" x="133" y="278" width="149" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="New game - vs Player"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title" translatesAutoresizingMaskIntoConstraints="NO" id="r8M-bY-Zmd">
+                                <rect key="frame" x="80.5" y="44" width="253.5" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="DdB-CB-6wx"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uNu-qg-Ft5">
+                                <rect key="frame" x="131" y="478.5" width="152" height="51"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="24"/>
+                                <state key="normal" title="Play vs. Player">
+                                    <color key="titleColor" red="0.0" green="0.28411243333738012" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="8iH-t7-lue" kind="presentation" identifier="playerSegue" id="cMz-gx-sqy"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9yp-XP-NoC"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KLv-D4-185" firstAttribute="centerY" secondItem="BQk-Jx-9jG" secondAttribute="centerY" id="JHW-eD-ZvC"/>
+                            <constraint firstItem="uNu-qg-Ft5" firstAttribute="centerX" secondItem="BQk-Jx-9jG" secondAttribute="centerX" id="OfB-IA-tsj"/>
+                            <constraint firstItem="r8M-bY-Zmd" firstAttribute="centerX" secondItem="BQk-Jx-9jG" secondAttribute="centerX" id="RRj-6c-fqS"/>
+                            <constraint firstItem="KLv-D4-185" firstAttribute="centerX" secondItem="BQk-Jx-9jG" secondAttribute="centerX" id="SnX-7J-MS5"/>
+                            <constraint firstItem="r8M-bY-Zmd" firstAttribute="top" secondItem="9yp-XP-NoC" secondAttribute="top" id="a54-yJ-4Ch"/>
+                            <constraint firstItem="uNu-qg-Ft5" firstAttribute="top" secondItem="KLv-D4-185" secondAttribute="bottom" constant="5" id="sMM-ML-gku"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOq-nR-A3Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -61,10 +70,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="768"/>
                             </arView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HU8-m9-iLr">
-                                <rect key="frame" x="170.5" y="776" width="73" height="30"/>
+                                <rect key="frame" x="170.5" y="768" width="73" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="73" id="Lgn-0e-AQq"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="16"/>
                                 <state key="normal" title="New game"/>
                                 <connections>
                                     <action selector="newGame:" destination="8iH-t7-lue" eventType="touchUpInside" id="4M5-Qu-8zX"/>
@@ -72,7 +82,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="siD-DW-r3g"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="HU8-m9-iLr" firstAttribute="centerX" secondItem="F3V-5i-6tf" secondAttribute="centerX" id="5Mz-7g-o4n"/>
                             <constraint firstItem="3DM-9i-Mur" firstAttribute="leading" secondItem="siD-DW-r3g" secondAttribute="leading" id="6RN-oH-Hsq"/>
@@ -96,11 +106,6 @@
         <segue reference="5xa-yM-s7p"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="title" width="253.5" height="50"/>
     </resources>
 </document>

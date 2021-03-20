@@ -23,7 +23,6 @@ class ARViewController: UIViewController {
     var gameType: Int = 1
     var aiPawn: Int = 1
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
@@ -45,6 +44,9 @@ class ARViewController: UIViewController {
         
 //        if gameType == 0 {
 //            randomPawn()
+//            if aiPawn == 0 {
+//                makeRandomMove()
+//            }
 //        }
     }
     
@@ -101,75 +103,6 @@ class ARViewController: UIViewController {
         }
     }
     
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        print("pawnTurn")
-//        print(pawnTurn)
-//        print("aiPawn")
-//        print(aiPawn)
-//        if gameType == 0 {
-//            if pawnTurn == aiPawn {
-//                var madeMove: Bool = false
-//                while madeMove == false {
-//                    if aiPawn == 0 {
-//                            let boxNumber = "Box" + String(Int.random(in: 1...9))
-//                            if currentEntity?.parent?.findEntity(named: boxNumber)?.findEntity(named: "circlePawn") == nil && currentEntity?.parent?.findEntity(named: boxNumber)?.findEntity(named: "crossPawn") == nil {
-//                                let circlePawnCopy = (circlePawn?.clone(recursive: true))!
-//                                circlePawnCopy.isEnabled = true
-//                                currentEntity?.parent?.findEntity(named: boxNumber)?.addChild(circlePawnCopy)
-//                                moveCount += 1
-//                                pawnTurn = 1
-//                                checkWin(currentEntity: currentEntity)
-//                                if isWon == true {
-//                                    drawWinner(name: circlePawnCopy.name)
-//                                } else if isWon == false && moveCount == 9 {
-//                                    drawWinner(name: "Draw")
-//                                }
-//                                madeMove = true
-//                        }
-//                    } else if aiPawn == 1 {
-//                        let boxNumber = "Box" + String(Int.random(in: 1...9))
-//                        if currentEntity?.parent?.findEntity(named: boxNumber)?.findEntity(named: "circlePawn") == nil && currentEntity?.parent?.findEntity(named: boxNumber)?.findEntity(named: "crossPawn") == nil {
-//                            let crossPawnCopy = (crossPawn?.clone(recursive: true))!
-//                            crossPawnCopy.isEnabled = true
-//                            currentEntity?.parent?.findEntity(named: boxNumber)?.addChild(crossPawnCopy)
-//                            moveCount += 1
-//                            pawnTurn = 0
-//                            checkWin(currentEntity: currentEntity)
-//                            if isWon == true {
-//                                drawWinner(name: crossPawnCopy.name)
-//                            } else if isWon == false && moveCount == 9 {
-//                                drawWinner(name: "Draw")
-//                            }
-//                            madeMove = true
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        print("pawnTurn")
-//        print(pawnTurn)
-//        print("aiPawn")
-//        print(aiPawn)
-//    }
-//
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//
-//    }
-//
-//    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        print("pawnTurn")
-//        print(pawnTurn)
-//        print("aiPawn")
-//        print(aiPawn)
-//        if gameType == 0 {
-//
-//        }
-//        print("pawnTurn")
-//        print(pawnTurn)
-//        print("aiPawn")
-//        print(aiPawn)
-//    }
-    
     func makeRandomMove() {
         if pawnTurn == aiPawn {
             var madeMove: Bool = false
@@ -222,7 +155,7 @@ class ARViewController: UIViewController {
             winSignCopy?.children[4].children[0].children[0].components[Transform]?.translation = SIMD3<Float>(-0.4570729, -0.1103848, 0.0)
         } else if name == "crossPawn" {
             winSignComponent.mesh = .generateText("Cross won!", extrusionDepth: 0.01, font: UIFont.systemFont(ofSize: 0.2), containerFrame: CGRect.zero, alignment: .center, lineBreakMode: .byCharWrapping)
-            winSignCopy?.children[4].children[0].children[0].components[Transform]?.translation = SIMD3<Float>(-0.3970729, -0.1103848, 0.0)
+            winSignCopy?.children[4].children[0].children[0].components[Transform]?.translation = SIMD3<Float>(-0.4470729, -0.1103848, 0.0)
         } else if name == "Draw" {
             winSignComponent.mesh = .generateText("It's a draw!", extrusionDepth: 0.01, font: UIFont.systemFont(ofSize: 0.2), containerFrame: CGRect.zero, alignment: .center, lineBreakMode: .byCharWrapping)
             winSignCopy?.children[4].children[0].children[0].components[Transform]?.translation = SIMD3<Float>(-0.4570729, -0.1103848, 0.0)
@@ -344,18 +277,15 @@ class ARViewController: UIViewController {
         }
     }
     
-//        arView.scene.anchors.removeAll()
-//        setupView()
-//        pawnTurn = 0
-//        moveCount = 0
-//        isWon = false
-//    }
-    
     @IBAction func newGame(_ sender: Any) {
         arView.scene.anchors.removeAll()
         setupView()
         pawnTurn = 0
         moveCount = 0
         isWon = false
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
     }
 }
