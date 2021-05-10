@@ -41,13 +41,6 @@ class ARViewController: UIViewController {
         winSign?.isEnabled = false
         
         arView.scene.anchors.append(boxAnchor)
-        
-//        if gameType == 0 {
-//            randomPawn()
-//            if aiPawn == 0 {
-//                makeRandomMove()
-//            }
-//        }
     }
     
     func randomPawn() {
@@ -56,6 +49,28 @@ class ARViewController: UIViewController {
             aiPawn = 0
         } else if number == 1 {
             aiPawn = 1
+        }
+    }
+    
+    func makeMove(entityType: String) {
+        var entityCopy: Entity? = nil
+        
+        if entityType == "circlePawn" {
+            entityCopy = (circlePawn?.clone(recursive: true))!
+        } else if entityType == "crossPawn" {
+            entityCopy = (crossPawn?.clone(recursive: true))!
+        }
+        
+        if entityCopy != nil {
+            entityCopy?.isEnabled = true
+            currentEntity?.addChild(entityCopy!)
+            moveCount += 1
+            if entityType == "circlePawn" {
+                pawnTurn = 1
+            } else if entityType == "crossPawn" {
+                pawnTurn = 0
+            }
+            checkWin(entityType: entityType)
         }
     }
     
@@ -68,34 +83,16 @@ class ARViewController: UIViewController {
             currentEntity = tappedEntity
             
             if pawnTurn == 0 {
-                if currentEntity?.findEntity(named: "crossPawn") == nil && currentEntity?.findEntity(named: "circlePawn") == nil{
-                    let circlePawnCopy = (circlePawn?.clone(recursive: true))!
-                    circlePawnCopy.isEnabled = true
-                    currentEntity?.addChild(circlePawnCopy)
-                    moveCount += 1
-                    pawnTurn = 1
-                    checkWin(currentEntity: currentEntity)
-                    if isWon == true {
-                        drawWinner(name: circlePawnCopy.name)
-                    } else if isWon == false && moveCount == 9 {
-                        drawWinner(name: "Draw")
-                    } else if gameType == 0 {
+                if currentEntity?.findEntity(named: "crossPawn") == nil && currentEntity?.findEntity(named: "circlePawn") == nil {
+                    makeMove(entityType: "circlePawn")
+                    if isWon == false && gameType == 0 {
                         makeRandomMove()
                     }
                 }
             } else if pawnTurn == 1 {
-                if currentEntity?.findEntity(named: "circlePawn") == nil && currentEntity?.findEntity(named: "crossPawn") == nil{
-                    let crossPawnCopy = (crossPawn?.clone(recursive: true))!
-                    crossPawnCopy.isEnabled = true
-                    currentEntity?.addChild(crossPawnCopy)
-                    moveCount += 1
-                    pawnTurn = 0
-                    checkWin(currentEntity: currentEntity)
-                    if isWon == true {
-                        drawWinner(name: crossPawnCopy.name)
-                    } else if isWon == false && moveCount == 9 {
-                        drawWinner(name: "Draw")
-                    } else if gameType == 0 {
+                if currentEntity?.findEntity(named: "circlePawn") == nil && currentEntity?.findEntity(named: "crossPawn") == nil {
+                    makeMove(entityType: "crossPawn")
+                    if isWon == false && gameType == 0 {
                         makeRandomMove()
                     }
                 }
@@ -104,41 +101,21 @@ class ARViewController: UIViewController {
     }
     
     func makeRandomMove() {
-        if pawnTurn == aiPawn {
+        if pawnTurn == aiPawn && moveCount != 9 {
             var madeMove: Bool = false
             while madeMove == false {
                 if aiPawn == 0 {
                     let boxNumber = "Box" + String(Int.random(in: 1...9))
                     if currentEntity?.parent?.findEntity(named: boxNumber)?.findEntity(named: "circlePawn") == nil && currentEntity?.parent?.findEntity(named: boxNumber)?.findEntity(named: "crossPawn") == nil {
                         currentEntity = currentEntity?.parent?.findEntity(named: boxNumber)
-                        let circlePawnCopy = (circlePawn?.clone(recursive: true))!
-                        circlePawnCopy.isEnabled = true
-                        currentEntity?.addChild(circlePawnCopy)
-                        moveCount += 1
-                        pawnTurn = 1
-                        checkWin(currentEntity: currentEntity)
-                        if isWon == true {
-                            drawWinner(name: circlePawnCopy.name)
-                        } else if isWon == false && moveCount == 9 {
-                            drawWinner(name: "Draw")
-                        }
+                        makeMove(entityType: "circlePawn")
                         madeMove = true
                     }
                 } else if aiPawn == 1 {
                     let boxNumber = "Box" + String(Int.random(in: 1...9))
                     if currentEntity?.parent?.findEntity(named: boxNumber)?.findEntity(named: "circlePawn") == nil && currentEntity?.parent?.findEntity(named: boxNumber)?.findEntity(named: "crossPawn") == nil {
                         currentEntity = currentEntity?.parent?.findEntity(named: boxNumber)
-                        let crossPawnCopy = (crossPawn?.clone(recursive: true))!
-                        crossPawnCopy.isEnabled = true
-                        currentEntity?.addChild(crossPawnCopy)
-                        moveCount += 1
-                        pawnTurn = 0
-                        checkWin(currentEntity: currentEntity)
-                        if isWon == true {
-                            drawWinner(name: crossPawnCopy.name)
-                        } else if isWon == false && moveCount == 9 {
-                            drawWinner(name: "Draw")
-                        }
+                        makeMove(entityType: "crossPawn")
                         madeMove = true
                     }
                 }
@@ -156,7 +133,7 @@ class ARViewController: UIViewController {
         } else if name == "crossPawn" {
             winSignComponent.mesh = .generateText("Cross won!", extrusionDepth: 0.01, font: UIFont.systemFont(ofSize: 0.2), containerFrame: CGRect.zero, alignment: .center, lineBreakMode: .byCharWrapping)
             winSignCopy?.children[4].children[0].children[0].components[Transform]?.translation = SIMD3<Float>(-0.4470729, -0.1103848, 0.0)
-        } else if name == "Draw" {
+        } else if name == "draw" {
             winSignComponent.mesh = .generateText("It's a draw!", extrusionDepth: 0.01, font: UIFont.systemFont(ofSize: 0.2), containerFrame: CGRect.zero, alignment: .center, lineBreakMode: .byCharWrapping)
             winSignCopy?.children[4].children[0].children[0].components[Transform]?.translation = SIMD3<Float>(-0.4570729, -0.1103848, 0.0)
         }
@@ -165,7 +142,7 @@ class ARViewController: UIViewController {
         winSignCopy?.isEnabled = true
     }
     
-    func checkWin(currentEntity: Entity?) {
+    func checkWin(entityType: String) {
         let boxParent = currentEntity?.parent
         
         if currentEntity?.name == "Box1" {
@@ -274,6 +251,12 @@ class ARViewController: UIViewController {
             if boxParent?.findEntity(named: "Box5")?.findEntity(named: pawnName!) != nil && boxParent?.findEntity(named: "Box1")?.findEntity(named: pawnName!) != nil {
                 isWon = true
             }
+        }
+        
+        if isWon == true {
+            drawWinner(name: entityType)
+        } else if moveCount == 9 {
+            drawWinner(name: "draw")
         }
     }
     
